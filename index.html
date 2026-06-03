@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magdalena Gulda — The Method</title>
+  <meta name="description" content="Structured nervous system recalibration for high-performing individuals. The Method — applied to your specific needs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300&family=Lato:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────────── */
+    :root {
+      --cream-0:   #E9DCCF;
+      --cream-1:   #EBDAC5;
+      --cream-2:   #EDD8BD;
+      --gold:      #E4D1AF;
+      --teal:      #173A52;
+      --navy:      #122838;
+
+      --font-h: 'Playfair Display', Georgia, serif;
+      --font-b: 'Lato', system-ui, sans-serif;
+
+      --max-w: 1120px;
+      --ease:  cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ─── RESET & BASE ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-b);
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--navy);
+      background-color: var(--cream-0);
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── UTILITIES ──────────────────────────────────────────────── */
+    .container {
+      width: min(var(--max-w), 100% - 3rem);
+      margin-inline: auto;
+    }
+    .section-pad { padding-block: clamp(1.75rem, 3.5vw, 3rem); }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+    .fade-up.delay-1 { transition-delay: .12s; }
+    .fade-up.delay-2 { transition-delay: .24s; }
+    .fade-up.delay-3 { transition-delay: .36s; }
+
+    /* ─── TYPOGRAPHY ─────────────────────────────────────────────── */
+    h1,h2,h3,h4 {
+      font-family: var(--font-h);
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: .02em;
+    }
+    .eyebrow {
+      font-family: var(--font-b);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      opacity: .65;
+    }
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin-block: 1.5rem;
+    }
+
+    /* ─── BUTTONS ────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--font-b);
+      font-size: .875rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .9rem 2.2rem;
+      border: none;
+      cursor: pointer;
+      transition: background .25s var(--ease), box-shadow .25s var(--ease), transform .2s var(--ease);
+    }
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-gold { background: var(--gold); color: var(--navy); }
+    .btn-gold:hover { background: #d9c49e; box-shadow: 0 6px 20px rgba(228,209,175,.45); }
+
+    .btn-teal { background: var(--teal); color: var(--cream-0); }
+    .btn-teal:hover { background: #1e4b69; box-shadow: 0 6px 20px rgba(23,58,82,.35); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--navy);
+      padding: .8rem 0;
+      border-bottom: 1px solid var(--gold);
+      letter-spacing: .08em;
+      font-family: var(--font-b);
+      font-size: .875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .btn-ghost::after { content: '→'; transition: transform .2s var(--ease); margin-left: .4rem; }
+    .btn-ghost:hover::after { transform: translateX(5px); }
+
+    .btn-ghost-light {
+      background: transparent;
+      color: var(--cream-0);
+      padding: .8rem 0;
+      border-bottom: 1px solid rgba(228,209,175,.55);
+      letter-spacing: .08em;
+      font-family: var(--font-b);
+      font-size: .875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .btn-ghost-light::after { content: '→'; transition: transform .2s var(--ease); margin-left: .4rem; }
+    .btn-ghost-light:hover::after { transform: translateX(5px); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--font-b); font-size: .875rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .85rem 2rem; cursor: pointer;
+      background: transparent; color: var(--navy);
+      border: 1px solid var(--navy);
+      transition: background .25s var(--ease), color .25s var(--ease), transform .2s var(--ease);
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--cream-0); transform: translateY(-1px); }
+
+    .btn-outline-light {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--font-b); font-size: .875rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .85rem 2rem; cursor: pointer;
+      background: transparent; color: var(--cream-0);
+      border: 1px solid var(--cream-0);
+      transition: background .25s var(--ease), color .25s var(--ease), transform .2s var(--ease);
+    }
+    .btn-outline-light:hover { background: var(--cream-0); color: var(--navy); transform: translateY(-1px); }
+
+    /* ─── NAVIGATION ─────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      padding: 1.5rem 0;
+      transition: background .3s var(--ease), padding .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    .nav.scrolled {
+      background: rgba(18,40,56,.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 1rem 0;
+      box-shadow: 0 1px 0 rgba(228,209,175,.2);
+    }
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav__logo {
+      font-family: var(--font-h);
+      font-weight: 300;
+      font-size: 1.15rem;
+      letter-spacing: .06em;
+      color: var(--cream-0);
+    }
+    .nav__links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav__links a {
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--cream-0);
+      opacity: .8;
+      position: relative;
+      padding-bottom: 2px;
+      transition: opacity .2s;
+    }
+    .nav__links a:hover { opacity: 1; }
+    .nav__links a.active { opacity: 1; }
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s var(--ease);
+    }
+    .nav__links a:hover::after,
+    .nav__links a.active::after { transform: scaleX(1); }
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: .25rem;
+    }
+    .nav__hamburger span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--cream-0);
+      transition: transform .25s var(--ease), opacity .25s;
+    }
+    .nav__hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .nav__mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: var(--navy);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .nav__mobile.open { display: flex; }
+    .nav__mobile a {
+      font-family: var(--font-h);
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: .04em;
+      color: var(--cream-0);
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      background-color: var(--cream-0);
+      background-image: url('./images/magda-hero.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      padding-block: clamp(8rem, 16vw, 14rem);
+    }
+    .hero__eyebrow {
+      font-family: var(--font-b);
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.0rem;
+      opacity: .8;
+    }
+    .hero__headline {
+      font-family: var(--font-h);
+      font-weight: 300;
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
+      line-height: 1.2;
+      letter-spacing: .02em;
+      color: var(--navy);
+      margin-bottom: 2rem;
+    }
+    .hero__headline em { font-style: italic; color: var(--teal); }
+    .hero__sub {
+      font-family: var(--font-b);
+      font-size: clamp(.9rem, 1.3vw, 1rem);
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--navy);
+      opacity: .75;
+      max-width: 520px;
+      margin-bottom: 0;
+    }
+    .hero__ctas {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      align-items: center;
+    }
+    .hero__video-btn {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-family: var(--font-b);
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      opacity: .7;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: opacity .2s;
+    }
+    .hero__video-btn:hover { opacity: 1; }
+    .hero__video-btn .play-icon {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background .2s;
+    }
+    .hero__video-btn:hover .play-icon { background: var(--gold); }
+    .hero__video-btn svg { width: 12px; height: 12px; fill: var(--navy); margin-left: 2px; }
+    .hero__scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      opacity: .4;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    .hero__scroll-hint span { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; }
+    .hero__scroll-hint svg { width: 18px; }
+    @keyframes scrollBounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─── VIDEO OVERLAY ──────────────────────────────────────────── */
+    .video-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(18,40,56,.92);
+      align-items: center;
+      justify-content: center;
+    }
+    .video-overlay.open { display: flex; }
+    .video-overlay__inner {
+      position: relative;
+      width: min(860px, 90vw);
+      aspect-ratio: 16/9;
+      background: #000;
+    }
+    .video-overlay__close {
+      position: absolute;
+      top: -3rem;
+      right: 0;
+      background: none;
+      border: none;
+      color: var(--cream-0);
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+      opacity: .7;
+      transition: opacity .2s;
+    }
+    .video-overlay__close:hover { opacity: 1; }
+
+    /* ─── SECTION: PROBLEM ───────────────────────────────────────── */
+    .section-problem { background: var(--cream-1); }
+    .problem__layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: center;
+    }
+    .problem__label {
+      font-family: var(--font-h);
+      font-weight: 300;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.3;
+      color: var(--navy);
+    }
+    .problem__body { font-size: 1.05rem; line-height: 1.25; color: var(--navy); opacity: .85; }
+    .problem__body p + p { margin-top: 1.25rem; }
+
+    /* ─── SECTION: TWO PATHS ─────────────────────────────────────── */
+    .section-paths { background: var(--navy); }
+    .paths__headline { text-align: center; margin-bottom: clamp(.75rem, 1.5vw, 1.25rem); }
+    .paths__headline h2 { font-size: clamp(1.8rem, 3.2vw, 2.75rem); margin-top: .75rem; color: var(--cream-0); }
+    .paths__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .path-card { padding: clamp(1.5rem, 3vw, 2.5rem); display: flex; flex-direction: column; gap: .4rem; }
+    .path-card .btn-outline,
+    .path-card .btn-outline-light { margin-top: 1.5rem; align-self: flex-start; }
+    .path-card--return { background: var(--cream-2); }
+    .path-card--field  { background: var(--teal); color: var(--cream-0); }
+    .path-card__tag { font-size: .7rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; }
+    .path-card--return .path-card__tag { color: var(--teal); }
+    .path-card--field  .path-card__tag { color: var(--gold); }
+    .path-card__title { font-family: var(--font-h); font-weight: 300; font-size: clamp(1.9rem, 3vw, 2.6rem); line-height: 1.2; }
+    .path-card--field .path-card__title { color: var(--cream-0); }
+    .path-card__sub { font-size: .9rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; opacity: .6; }
+    .path-card__body { font-size: 1.025rem; line-height: 1.25; opacity: .85; flex: 1; }
+
+    /* ─── SECTION: METHOD ────────────────────────────────────────── */
+    .section-method { background: var(--cream-2); }
+    .method__layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(3rem, 6vw, 7rem); align-items: start; }
+    .method__sticky { position: sticky; top: 8rem; }
+    .method__label { font-family: var(--font-h); font-weight: 300; font-size: clamp(1.9rem, 3.2vw, 2.8rem); line-height: 1.25; margin-top: .75rem; }
+    .method__label em { font-style: italic; color: var(--teal); }
+    .method__body { font-size: 1.025rem; line-height: 1.25; opacity: .85; }
+    .method__body p + p { margin-top: 1.25rem; }
+
+    /* ─── SECTION: ABOUT — FULL-WIDTH PHOTO HERO ─────────────────── */
+    /*
+     * IMAGE: Save Magdalena's photo as  images/magdalena.jpg
+     * (in the same site/ folder as this index.html)
+     * Ideal: landscape, min 1600px wide, face positioned right-of-centre.
+     */
+    .section-about {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-block: clamp(7rem, 12vw, 11rem);
+      background-image: url('./images/magdalena.jpg');
+      background-size: cover;
+      background-position: 62% center;
+      background-repeat: no-repeat;
+      background-color: var(--navy); /* fallback while image loads */
+    }
+
+    /* Left-to-right gradient: dark left for text readability, clear right for photo */
+    .section-about::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(18, 40, 56, 0.93) 0%,
+        rgba(18, 40, 56, 0.88) 28%,
+        rgba(18, 40, 56, 0.60) 46%,
+        rgba(18, 40, 56, 0.18) 62%,
+        transparent 78%
+      );
+      z-index: 1;
+    }
+
+    /* Subtle top/bottom vignette */
+    .section-about::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(18,40,56,.2) 0%, transparent 15%,
+        transparent 85%, rgba(18,40,56,.2) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .section-about .container { position: relative; z-index: 2; }
+
+    .about__content { max-width: 48%; color: var(--cream-0); }
+    .about__content .eyebrow { color: var(--gold); opacity: .9; letter-spacing: .22em; }
+    .about__content .divider { background: var(--gold); opacity: .7; }
+    .about__content h2 { font-size: clamp(1.8rem, 2.8vw, 2.6rem); line-height: 1.25; color: var(--cream-0); margin-top: .75rem; }
+    .about__body { font-size: 1.025rem; line-height: 1.25; color: rgba(233,220,207,.85); margin-top: 1.5rem; }
+    .about__body p + p { margin-top: 1.2rem; }
+
+    .about__credentials { display: flex; flex-wrap: wrap; gap: .6rem 1rem; margin-top: 2rem; }
+    .about__cred-tag {
+      font-size: .72rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gold); opacity: .8; border: 1px solid rgba(228,209,175,.3); padding: .3rem .75rem;
+    }
+
+    /* ─── SECTION: EXPERIENCE FIRST ─────────────────────────────── */
+    .section-experience { background: var(--gold); }
+    .experience__headline { text-align: center; margin-bottom: clamp(.75rem, 1.5vw, 1.25rem); }
+    .experience__headline h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin-top: .75rem; }
+    .experience__headline .eyebrow { opacity: .55; }
+    .experience__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .exp-card { background: var(--cream-0); padding: clamp(1.25rem, 2.5vw, 2rem); display: flex; flex-direction: column; gap: .75rem; }
+    .exp-card .btn-outline { margin-top: 1.25rem; align-self: flex-start; }
+    .exp-card__number { font-family: var(--font-h); font-size: 3rem; font-weight: 300; color: var(--gold); line-height: 1; }
+    .exp-card__title { font-family: var(--font-h); font-weight: 300; font-size: 1.5rem; color: var(--navy); line-height: 1.3; }
+    .exp-card__body { font-size: .975rem; line-height: 1.25; color: var(--navy); opacity: .8; flex: 1; }
+
+    /* ─── SECTION: FAQ ───────────────────────────────────────────── */
+    .section-faq { background: var(--cream-1); }
+    .faq__header { max-width: 540px; margin-bottom: clamp(.75rem, 1.5vw, 1.25rem); }
+    .faq__header h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin-top: .75rem; }
+    .faq__list { max-width: 760px; }
+    .faq__item { border-top: 1px solid rgba(23,58,82,.3); }
+    .faq__item:last-child { border-bottom: 1px solid rgba(23,58,82,.3); }
+    .faq__question {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 1.5rem; padding: .9rem 0; cursor: pointer;
+      background: none; border: none; width: 100%; text-align: left;
+    }
+    .faq__question-text { font-family: var(--font-h); font-weight: 300; font-size: 1.1rem; color: var(--navy); line-height: 1.4; }
+    .faq__icon { width: 20px; height: 20px; flex-shrink: 0; position: relative; }
+    .faq__icon::before, .faq__icon::after { content: ''; position: absolute; background: var(--gold); transition: transform .25s var(--ease), opacity .25s; }
+    .faq__icon::before { top: 50%; left: 0; right: 0; height: 1px; transform: translateY(-50%); }
+    .faq__icon::after  { left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-50%); }
+    .faq__item.open .faq__icon::after { transform: translateX(-50%) rotate(90deg); opacity: 0; }
+    .faq__answer { overflow: hidden; max-height: 0; transition: max-height .4s var(--ease); }
+    .faq__answer-inner { padding-bottom: 1.5rem; font-size: 1rem; line-height: 1.25; color: var(--navy); opacity: .82; }
+
+    /* ─── SECTION: CONTACT ───────────────────────────────────────── */
+    .section-contact { background: var(--navy); }
+    .contact__layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(3rem, 6vw, 7rem); align-items: start; }
+    .contact__info h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: .75rem; color: var(--cream-0); }
+    .contact__info-body { font-size: 1rem; line-height: 1.9; color: rgba(233,220,207,.82); margin-top: 1.5rem; }
+    .contact__meta { margin-top: 2rem; font-size: .85rem; letter-spacing: .05em; color: var(--cream-0); opacity: .55; }
+    .contact__social { display: flex; gap: 1.25rem; align-items: center; margin-top: 2rem; }
+    .contact__social a { opacity: .4; transition: opacity .2s; display: flex; color: var(--cream-0); }
+    .contact__social a:hover { opacity: .85; }
+    .contact__social svg { width: 20px; height: 20px; fill: currentColor; }
+    .section-contact .eyebrow { color: var(--gold); opacity: .8; }
+    .contact__form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form__group { display: flex; flex-direction: column; gap: .4rem; }
+    .form__label { font-size: .72rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-0); opacity: .6; }
+    .form__input, .form__textarea {
+      background: var(--cream-0); border: 1px solid rgba(228,209,175,.5);
+      padding: .875rem 1rem; font-family: var(--font-b); font-size: .95rem;
+      color: var(--navy); outline: none; transition: border-color .2s, background .2s;
+      width: 100%; border-radius: 0; -webkit-appearance: none;
+    }
+    .form__input:focus, .form__textarea:focus { border-color: var(--gold); background: #f5ede2; }
+    .form__input:hover, .form__textarea:hover { background: #f0e5d8; }
+    .form__input::placeholder, .form__textarea::placeholder { opacity: .4; }
+    .form__textarea { resize: vertical; min-height: 140px; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    .footer {
+      background: var(--cream-0);
+      padding-block: clamp(4rem, 7vw, 6rem) clamp(2rem, 4vw, 3rem);
+      border-top: 1px solid rgba(228,209,175,.5);
+    }
+    .footer__top {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      padding-bottom: clamp(2.5rem, 5vw, 4rem);
+      border-bottom: 1px solid rgba(228,209,175,.5);
+      margin-bottom: 2.5rem;
+    }
+    .footer__brand-name { font-family: var(--font-h); font-weight: 300; font-size: 1.4rem; letter-spacing: .04em; margin-bottom: .75rem; }
+    .footer__tagline { font-size: .875rem; line-height: 1.75; opacity: .65; max-width: 260px; }
+    .footer__col-title { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; opacity: .5; margin-bottom: 1.25rem; }
+    .footer__links { list-style: none; display: flex; flex-direction: column; gap: .65rem; }
+    .footer__links a { font-size: .9rem; opacity: .7; transition: opacity .2s; }
+    .footer__links a:hover { opacity: 1; }
+    .footer__bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer__copy { font-size: .78rem; opacity: .45; }
+    .footer__legal { display: flex; gap: 1.5rem; }
+    .footer__legal a { font-size: .78rem; opacity: .45; transition: opacity .2s; }
+    .footer__legal a:hover { opacity: .75; }
+    .footer__social { display: flex; gap: 1.25rem; align-items: center; }
+    .footer__social a { opacity: .45; transition: opacity .2s; display: flex; color: var(--navy); }
+    .footer__social a:hover { opacity: .85; }
+    .footer__social svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* ─── SECTION: TESTIMONIALS ─────────────────────────────────── */
+    .section-testimonials { background: var(--cream-1); overflow: hidden; }
+    .testimonials__header { text-align: center; margin-bottom: clamp(.75rem, 1.5vw, 1.25rem); }
+    .testimonials__slider { position: relative; }
+    .testimonials__track {
+      display: flex;
+      transition: transform .55s cubic-bezier(.4,0,.2,1);
+      touch-action: pan-y;
+      user-select: none;
+    }
+    .testimonial__slide {
+      min-width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .testimonial__img {
+      width: 100%;
+      max-width: 720px;
+      height: auto;
+      max-height: 80vh;
+      object-fit: contain;
+      display: block;
+      margin-inline: auto;
+      pointer-events: none;
+    }
+    .testimonials__btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px; height: 44px;
+      border: 1px solid rgba(18,40,56,.25);
+      background: var(--cream-1);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, border-color .2s;
+      z-index: 2;
+    }
+    .testimonials__btn--prev { left: 0; }
+    .testimonials__btn--next { right: 0; }
+    .testimonials__btn:hover { background: var(--navy); border-color: var(--navy); }
+    .testimonials__btn:hover svg { stroke: var(--cream-0); }
+    .testimonials__btn svg { width: 18px; height: 18px; stroke: var(--navy); stroke-width: 1.5; fill: none; }
+    .testimonials__dots {
+      display: flex; gap: .6rem;
+      justify-content: center;
+      margin-top: clamp(1rem, 2vw, 1.5rem);
+    }
+    .testimonials__dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(18,40,56,.2);
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+      border: none;
+      padding: 0;
+    }
+    .testimonials__dot.active { background: var(--navy); transform: scale(1.2); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .nav__links { display: none; }
+      .nav__hamburger { display: flex; }
+      .problem__layout, .method__layout, .contact__layout { grid-template-columns: 1fr; }
+      .paths__grid { grid-template-columns: 1fr; }
+      .experience__grid { grid-template-columns: 1fr; }
+      .footer__top { grid-template-columns: 1fr 1fr; }
+      .method__sticky { position: static; }
+      .section-about { background-position: 70% center; }
+      .section-about::before {
+        background: linear-gradient(to right,
+          rgba(18,40,56,.95) 0%, rgba(18,40,56,.90) 45%,
+          rgba(18,40,56,.65) 70%, rgba(18,40,56,.3) 100%);
+      }
+      .about__content { max-width: 70%; }
+    }
+    @media (max-width: 600px) {
+      .about__content { max-width: 100%; }
+      .section-about::before { background: rgba(18,40,56,.88); }
+    }
+    @media (max-width: 540px) {
+      .footer__top { grid-template-columns: 1fr; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ──────────────────────────────────────────── -->
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="/" class="nav__logo" aria-label="MagdalenaGulda.com home">Magdalena Gulda</a>
+      <ul class="nav__links" role="list">
+        <li><a href="/for-women">For Women</a></li>
+        <li><a href="/for-men">For Men</a></li>
+        <li><a href="/method-about">Method &amp; About</a></li>
+        <li><a href="/experiences">Experiences</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <nav class="nav__mobile" id="mobileNav" aria-label="Mobile navigation">
+    <a href="/for-women">For Women</a>
+    <a href="/for-men">For Men</a>
+    <a href="/method-about">Method &amp; About</a>
+    <a href="/experiences">Experiences</a>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────────────────── -->
+  <section class="hero" id="hero" aria-labelledby="hero-headline">
+    <div class="container">
+      <div class="hero__inner">
+        <h1 class="hero__headline fade-up delay-1" id="hero-headline">
+          You operate at<br/>a high level.<br/>
+          <em>But your inner system<br/>is paying the price.</em>
+        </h1>
+
+        <p class="hero__sub fade-up delay-2">
+          I work with individuals who are ready to expand their capacity,
+          regulate their nervous system, and lead from a grounded, powerful state.
+        </p>
+        <p class="hero__sub fade-up delay-2">
+          This is a structured process designed to strengthen your nervous
+          system, presence, and internal ability to hold more — without collapse.
+        </p>
+
+        <div class="hero__ctas fade-up delay-3">
+          <a href="#paths" class="btn btn-gold">Find Your Path</a>
+          <button class="hero__video-btn" id="watchStoryBtn" aria-label="Watch Magdalena's story video">
+            <span class="play-icon">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l9 5-9 5V3z"/></svg>
+            </span>
+            Watch My Story
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll-hint" aria-hidden="true">
+      <span>Scroll</span>
+      <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M9 3v12M3 10l6 6 6-6"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Video overlay -->
+  <div class="video-overlay" id="videoOverlay" role="dialog" aria-modal="true" aria-label="Hero video" aria-hidden="true">
+    <div class="video-overlay__inner">
+      <button class="video-overlay__close" id="closeVideoBtn" aria-label="Close video">&times;</button>
+      <video id="videoFrame" width="100%" height="100%" src="./images/About Magda.mp4" controls playsinline style="display:block;background:#000;"></video>
+    </div>
+  </div>
+
+  <!-- ─── PROBLEM ───────────────────────────────────────────────── -->
+  <section class="section-problem section-pad" aria-labelledby="problem-heading">
+    <div class="container">
+      <div class="problem__layout">
+        <div>
+          <p class="eyebrow fade-up">What Brings People Here</p>
+          <div class="divider fade-up delay-1"></div>
+          <p class="problem__label fade-up delay-1" id="problem-heading">
+            The problem isn't<br/>visible from the outside.
+          </p>
+        </div>
+        <div class="problem__body fade-up delay-2">
+          <p>You've built something real. The results are visible, the pressure is constant, and something that used to feel sustainable no longer does.</p>
+          <p>It lives in the quality of your sleep — not broken, just no longer restorative. A tension at a low level that never quite leaves. A baseline that has quietly slipped, without a single dramatic cause.</p>
+          <p>Your tests come back normal. Your life looks fine.</p>
+          <p>Your nervous system is telling a different story.</p>
+          <div style="margin-top:2.5rem;">
+            <a href="/method-about" class="btn-outline">See how the work happens</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TWO PATHS ─────────────────────────────────────────────── -->
+  <section class="section-paths section-pad" id="paths" aria-labelledby="paths-heading">
+    <div class="container">
+      <div class="paths__headline fade-up">
+        <h2 id="paths-heading">Private Mentorship</h2>
+      </div>
+
+      <div class="paths__grid">
+        <div class="path-card path-card--return">
+          <p class="path-card__tag fade-up">For Women</p>
+          <div class="divider fade-up delay-1" style="background:var(--teal);opacity:.3;"></div>
+          <h2 class="path-card__title fade-up delay-1">The Return</h2>
+          <p class="path-card__sub fade-up delay-1">A Private Recalibration</p>
+          <p class="path-card__body fade-up delay-2">
+            A structured recalibration for women whose body has been signaling something for a long time.
+            Your sleep, your energy, your sense of yourself — this is where we begin.
+          </p>
+          <a href="/for-women" class="btn-outline fade-up delay-2">Explore The Return</a>
+        </div>
+
+        <div class="path-card path-card--field">
+          <p class="path-card__tag fade-up">For Men</p>
+          <div class="divider fade-up delay-1" style="background:var(--gold);opacity:.5;"></div>
+          <h2 class="path-card__title fade-up delay-1">The Field</h2>
+          <p class="path-card__sub fade-up delay-1" style="color:var(--cream-0);opacity:.5;">Awakened Leadership</p>
+          <p class="path-card__body fade-up delay-2">
+            A private container for high-performing men ready to evolve beyond what achievement alone
+            has been able to reach. Something deeper is calling.
+          </p>
+          <a href="/for-men" class="btn-outline-light fade-up delay-2">Explore The Field</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── METHOD INTRO ──────────────────────────────────────────── -->
+  <section class="section-method section-pad" aria-labelledby="method-heading">
+    <div class="container">
+      <div class="method__layout">
+        <div class="method__sticky">
+          <div class="divider fade-up delay-1"></div>
+          <h2 class="method__label fade-up delay-1" id="method-heading">
+            The Method
+          </h2>
+          <div style="margin-top:2.5rem;" class="fade-up delay-2">
+            <a href="/method-about" class="btn-outline">Understand the Method</a>
+          </div>
+        </div>
+
+        <div class="method__body">
+          <p class="fade-up">Five integrated modalities. One system. Applied to your nervous system — not a generic protocol.</p>
+          <p class="fade-up delay-1">The work happens at the level of body, breath, voice, awareness, and pattern — simultaneously. That simultaneity is what makes the change hold.</p>
+          <p class="fade-up delay-2">Most transformation work is compartmentalized by design. Therapy stays in therapy. Coaching stays cognitive. Meditation is separate from the body. The nervous system rarely enters the room.</p>
+          <p class="fade-up delay-2">This work engages all of it at once — because that's how the human system actually functions. Working on one layer in isolation produces partial results. Working with the whole system produces the kind of change that holds.</p>
+          <p class="fade-up delay-3">The work is also measurable. HRV and sleep quality tell you whether something real has shifted — before you can fully articulate what changed.</p>
+          <p class="fade-up delay-3">This is what distinguishes the work from anything you've tried before.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT — FULL-WIDTH PHOTO HERO ────────────────────────── -->
+  <section class="section-about" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="about__content">
+
+        <p class="eyebrow fade-up">About Magdalena</p>
+        <div class="divider fade-up delay-1"></div>
+
+        <h2 class="fade-up delay-1" id="about-heading">
+          Where nervous system science<br/>
+          and ancient healing<br/>
+          traditions meet.
+        </h2>
+
+        <div class="about__body fade-up delay-2">
+          <p>Twenty-five years working at the intersection of neuroscience, somatic embodiment, and transformational guidance.</p>
+          <p>My work creates precise, measurable change. It also goes places that measurement can't fully reach. I've stopped trying to choose which of those things to lead with.</p>
+          <p>Born in Poland. Philosophy degree from the University of Warsaw. Founded The Sound Healing Institute in Mexico in 2010. Trained thousands. Worked across four continents. HeartMath® Collaborator.</p>
+        </div>
+
+        <div class="about__credentials fade-up delay-3">
+          <span class="about__cred-tag">HeartMath® Collaborator</span>
+          <span class="about__cred-tag">25+ Years Practice</span>
+          <span class="about__cred-tag">Sound Healing Institute</span>
+          <span class="about__cred-tag">4 Continents</span>
+        </div>
+
+        <div style="margin-top:2.5rem;" class="fade-up delay-3">
+          <a href="/method-about" class="btn-ghost-light">My story and background</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EXPERIENCE FIRST ──────────────────────────────────────── -->
+  <section class="section-experience section-pad" aria-labelledby="experience-heading">
+    <div class="container">
+      <div class="experience__headline fade-up">
+        <p class="eyebrow">Not Ready to Commit to a Program?</p>
+        <h2 id="experience-heading">Start here.</h2>
+      </div>
+
+      <div class="experience__grid">
+        <div class="exp-card fade-up">
+          <p class="exp-card__number" aria-hidden="true"></p>
+          <h3 class="exp-card__title">Book a 1 on 1 Session</h3>
+          <p class="exp-card__body">A single session with the Sound Healing Institute — the most direct way to experience frequency work before committing to a program.</p>
+          <span class="btn-outline">Book a Session</span>
+        </div>
+
+        <div class="exp-card fade-up delay-1">
+          <p class="exp-card__number" aria-hidden="true"></p>
+          <h3 class="exp-card__title">Free Meditation</h3>
+          <p class="exp-card__body">A 10–15 minute guided audio experience. Most people notice something shift in the first few minutes. That's a good place to start.</p>
+          <a href="#meditation-download" class="btn-outline">Free Download</a>
+        </div>
+
+        <div class="exp-card fade-up delay-2">
+          <p class="exp-card__number" aria-hidden="true"></p>
+          <h3 class="exp-card__title">Listen on Spotify</h3>
+          <p class="exp-card__body">Six albums. Vedic traditions woven with modern harmonic composition. Created to function as medicine, not just music. </p>
+          <a href="https://open.spotify.com/artist/7jXyIiWahFYkQ2rAhauAsF" target="_blank" rel="noopener" class="btn-outline">Listen on Spotify</a>
+    	</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─────────────────────────────────────────── -->
+  <section class="section-testimonials section-pad" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <div class="testimonials__header fade-up">
+        <p class="eyebrow">What Clients Say</p>
+        <div class="divider" style="margin-inline:auto;"></div>
+      </div>
+      <div class="testimonials__slider fade-up delay-1">
+        <button class="testimonials__btn testimonials__btn--prev" id="testimPrev" aria-label="Previous testimonial">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="testimonials__track" id="testimonialsTrack">
+          <!-- slides auto-populated by JS from images/testimonial-*.jpg -->
+        </div>
+        <button class="testimonials__btn testimonials__btn--next" id="testimNext" aria-label="Next testimonial">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="testimonials__dots" id="testimDots"></div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ───────────────────────────────────────────────── -->
+  <section class="section-contact section-pad" id="contact" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="contact__layout">
+        <div class="contact__info fade-up">
+          <p class="eyebrow">Reach Out</p>
+          <div class="divider"></div>
+          <h2 id="contact-heading">Get in Touch</h2>
+          <p class="contact__info-body">Questions about the work, the programs, or whether this is right for you. I read every message personally.</p>
+          <p class="contact__meta">Response time: 24–48 hours</p>
+          <div class="contact__social" aria-label="Social media">
+            <a href="https://wa.me/529841151423" target="_blank" rel="noopener" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+            <a href="https://www.instagram.com/magdalenaguldah" target="_blank" rel="noopener" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="https://www.linkedin.com/in/magdalena-gulda-48708610/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="https://www.youtube.com/@thesoundhealinginstitute4912" target="_blank" rel="noopener" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></a>
+            <a href="https://open.spotify.com/artist/7jXyIiWahFYkQ2rAhauAsF" target="_blank" rel="noopener" aria-label="Spotify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+          </div>
+        </div>
+
+        <form class="contact__form fade-up delay-1" name="contact" method="POST" novalidate>
+          <div class="form__group">
+            <label class="form__label" for="name">Name</label>
+            <input class="form__input" type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="email">Email</label>
+            <input class="form__input" type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="message">What would you like to discuss?</label>
+            <textarea class="form__textarea" id="message" name="message" placeholder="Tell me a little about where you are and what you're looking for…" required></textarea>
+          </div>
+          <button type="submit" class="btn-outline-light" style="align-self:flex-start;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ──────────────────────────────────────────────────── -->
+  <section class="section-faq section-pad" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="faq__header fade-up">
+        <div class="divider"></div>
+        <h2 id="faq-heading">Frequently Asked</h2>
+      </div>
+
+      <div class="faq__list fade-up delay-1" role="list">
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false">
+            <span class="faq__question-text">What is The Method?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__answer" role="region">
+            <p class="faq__answer-inner">
+              The Method is an integrated nervous system and embodiment approach designed to create deep, lasting transformation from the inside out. It combines nervous system work, somatic embodiment, voice activation, sound healing, emotional alchemy, and transformational guidance within a highly held field designed for profound internal expansion.<br/><br/>
+              This work is not about fixing you. It is about increasing your capacity to hold more — more power, more truth, more visibility, more intimacy, more life — without your system collapsing back into survival.<br/><br/>
+              The process is deeply individualised and applied directly to your unique nervous system, emotional patterns, and current level of capacity. This is not a generic wellness protocol or surface-level coaching. It is for individuals who are truly ready to move beyond performance, self-protection, and unconscious limitation — and step into a more coherent, regulated, powerful way of being, leading, and relating.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false">
+            <span class="faq__question-text">How is this different from therapy or coaching?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__answer" role="region">
+            <p class="faq__answer-inner">Therapy works on processing the past. Coaching works on strategy and behavior. This works at the nervous system level — where real, lasting change happens. The shifts are measurable: sleep quality, HRV, how quickly you recover from stress. And they're integrated into how you actually function, lead, and relate.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false">
+            <span class="faq__question-text">Is this backed by science?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__answer" role="region">
+            <p class="faq__answer-inner">Yes. The method integrates polyvagal theory, heart-brain coherence research (HeartMath Institute), sound frequency studies, somatic therapy, and neuroscience. HRV tracking and biometric feedback provide measurable evidence of nervous system shifts where applicable.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false">
+            <span class="faq__question-text">Can I do this online?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__answer" role="region">
+            <p class="faq__answer-inner">Yes. Sessions are online, in-person, or hybrid. Most clients mix both. The work is equally effective either way.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false">
+            <span class="faq__question-text">Is there a spiritual or religious requirement?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__answer" role="region">
+            <p class="faq__answer-inner">No. While the work includes consciousness and awareness practices, it isn't tied to any religion or belief system. It's applied to people of all faiths and worldviews.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false">
+            <span class="faq__question-text">What if I'm skeptical about frequency and energetic work?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__answer" role="region">
+            <p class="faq__answer-inner">The science behind nervous system regulation, sound frequency, and heart-brain coherence is well-established. Many initially skeptical clients describe their first session as the most tangible experience of change they've had. A free discovery call is a no-pressure place to start.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false">
+            <span class="faq__question-text">How do I stay connected without committing to a program?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__answer" role="region">
+            <p class="faq__answer-inner">Listen on Spotify (Shankari), download the free meditation, book a single sound healing session through the Sound Healing Institute, or follow on Instagram for regular content.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────────── -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <p class="footer__brand-name">Magdalena Gulda</p>
+          <p class="footer__tagline">The Method — Structured nervous system recalibration for high-performing individuals.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Navigation</p>
+          <ul class="footer__links" role="list">
+            <li><a href="/for-women">For Women</a></li>
+            <li><a href="/for-men">For Men</a></li>
+            <li><a href="/method-about">Method &amp; About</a></li>
+            <li><a href="/experiences">Experiences</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Start Here</p>
+          <ul class="footer__links" role="list">
+            <li><a href="#meditation-download">Free Meditation</a></li>
+            <li><a href="#book-session">Book 1 on 1 Session</a></li>
+            <li><a href="https://thesoundhealinginstitute.com/" target="_blank" rel="noopener">Sound Healing Institute</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Magdalena Gulda · The Method</p>
+        <div class="footer__social" aria-label="Social media">
+          <a href="https://wa.me/529841151423" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/magdalenaguldah" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/magdalena-gulda-48708610/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@thesoundhealinginstitute4912" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          </a>
+          <a href="https://open.spotify.com/artist/7jXyIiWahFYkQ2rAhauAsF" target="_blank" rel="noopener" aria-label="Spotify">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────────── -->
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    const watchBtn = document.getElementById('watchStoryBtn');
+    const overlay  = document.getElementById('videoOverlay');
+    const closeBtn = document.getElementById('closeVideoBtn');
+    const videoFrame = document.getElementById('videoFrame');
+    watchBtn.addEventListener('click', () => {
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      videoFrame.play();
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    });
+    const closeOverlay = () => {
+      videoFrame.pause();
+      videoFrame.currentTime = 0;
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      watchBtn.focus();
+    };
+    closeBtn.addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeOverlay(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeOverlay();
+    });
+
+    document.querySelectorAll('.faq__question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item   = btn.closest('.faq__item');
+        const answer = item.querySelector('.faq__answer');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq__item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq__answer').style.maxHeight = '0';
+          el.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // ── Testimonials slider ────────────────────────────────────────
+    (function() {
+      const track  = document.getElementById('testimonialsTrack');
+      const dotsEl = document.getElementById('testimDots');
+      if (!track) return;
+
+      // Auto-discover: add images named testimonial-N.jpg until one 404s
+      function loadImages(cb) {
+        let n = 1;
+        function tryNext() {
+          const src = `./images/testimonial-${n}.jpg`;
+          const img = new Image();
+          img.onload = () => {
+            const slide = document.createElement('div');
+            slide.className = 'testimonial__slide';
+            const el = document.createElement('img');
+            el.className = 'testimonial__img';
+            el.src = src;
+            el.alt = 'Client testimonial';
+            slide.appendChild(el);
+            track.appendChild(slide);
+            n++;
+            tryNext();
+          };
+          img.onerror = () => cb();
+          img.src = src;
+        }
+        tryNext();
+      }
+
+      loadImages(function() {
+        const slides = track.querySelectorAll('.testimonial__slide');
+        if (!slides.length) return;
+        let current = 0;
+
+        slides.forEach((_, i) => {
+          const d = document.createElement('button');
+          d.className = 'testimonials__dot' + (i === 0 ? ' active' : '');
+          d.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+          d.addEventListener('click', () => goTo(i));
+          dotsEl.appendChild(d);
+        });
+
+        function goTo(n) {
+          current = (n + slides.length) % slides.length;
+          track.style.transform = `translateX(-${current * 100}%)`;
+          dotsEl.querySelectorAll('.testimonials__dot').forEach((d, i) =>
+            d.classList.toggle('active', i === current));
+        }
+
+        document.getElementById('testimPrev').addEventListener('click', () => goTo(current - 1));
+        document.getElementById('testimNext').addEventListener('click', () => goTo(current + 1));
+
+        // Touch swipe
+        let touchStartX = 0;
+        track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+        track.addEventListener('touchend', e => {
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+        }, { passive: true });
+      });
+    })();
+  </script>
+</body>
+</html>

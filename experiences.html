@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiences · Magdalena Gulda</title>
+  <meta name="description" content="Transformational experiences beyond private mentorship — immersive retreats for women and executive events for organizations. Inquiry-based." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300&family=Lato:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────────── */
+    :root {
+      --cream-0:   #E9DCCF;
+      --cream-1:   #EBDAC5;
+      --cream-2:   #EDD8BD;
+      --gold:      #E4D1AF;
+      --teal:      #173A52;
+      --navy:      #122838;
+
+      --font-h: 'Playfair Display', Georgia, serif;
+      --font-b: 'Lato', system-ui, sans-serif;
+
+      --max-w: 1120px;
+      --ease:  cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ─── RESET & BASE ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-b);
+      font-size: 17px;
+      line-height: 1.25;
+      color: var(--navy);
+      background-color: var(--cream-0);
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── UTILITIES ──────────────────────────────────────────────── */
+    .container {
+      width: min(var(--max-w), 100% - 3rem);
+      margin-inline: auto;
+    }
+    .section-pad { padding-block: clamp(3rem, 6vw, 5.5rem); }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+    .fade-up.delay-1 { transition-delay: .12s; }
+    .fade-up.delay-2 { transition-delay: .24s; }
+    .fade-up.delay-3 { transition-delay: .36s; }
+
+    /* ─── TYPOGRAPHY ─────────────────────────────────────────────── */
+    h1,h2,h3,h4 {
+      font-family: var(--font-h);
+      font-weight: 300;
+      line-height: 1.25;
+      letter-spacing: .02em;
+    }
+    .eyebrow {
+      font-family: var(--font-b);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      opacity: .65;
+    }
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin-block: 1.5rem;
+    }
+
+    /* ─── BUTTONS ────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--font-b);
+      font-size: .875rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .9rem 2.2rem;
+      border: none;
+      cursor: pointer;
+      transition: background .25s var(--ease), box-shadow .25s var(--ease), transform .2s var(--ease);
+    }
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-gold { background: var(--gold); color: var(--navy); }
+    .btn-gold:hover { background: #d9c49e; box-shadow: 0 6px 20px rgba(228,209,175,.45); }
+
+    .btn-teal { background: var(--teal); color: var(--cream-0); }
+    .btn-teal:hover { background: #1e4b69; box-shadow: 0 6px 20px rgba(23,58,82,.35); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--navy);
+      padding: .8rem 0;
+      border-bottom: 1px solid var(--gold);
+      letter-spacing: .08em;
+      font-family: var(--font-b);
+      font-size: .875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .btn-ghost::after { content: '→'; transition: transform .2s var(--ease); margin-left: .4rem; }
+    .btn-ghost:hover::after { transform: translateX(5px); }
+
+    .btn-ghost-light {
+      background: transparent;
+      color: var(--cream-0);
+      padding: .8rem 0;
+      border-bottom: 1px solid rgba(228,209,175,.55);
+      letter-spacing: .08em;
+      font-family: var(--font-b);
+      font-size: .875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .btn-ghost-light::after { content: '→'; transition: transform .2s var(--ease); margin-left: .4rem; }
+    .btn-ghost-light:hover::after { transform: translateX(5px); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--font-b); font-size: .875rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .85rem 2rem; cursor: pointer;
+      background: transparent; color: var(--navy);
+      border: 1px solid var(--navy);
+      transition: background .25s var(--ease), color .25s var(--ease), transform .2s var(--ease);
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--cream-0); transform: translateY(-1px); }
+    .btn-outline-light {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--font-b); font-size: .875rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .85rem 2rem; cursor: pointer;
+      background: transparent; color: var(--cream-0);
+      border: 1px solid var(--cream-0);
+      transition: background .25s var(--ease), color .25s var(--ease), transform .2s var(--ease);
+    }
+    .btn-outline-light:hover { background: var(--cream-0); color: var(--navy); transform: translateY(-1px); }
+
+    /* ─── NAVIGATION ─────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      padding: 1.5rem 0;
+      transition: background .3s var(--ease), padding .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    .nav.scrolled {
+      background: rgba(18,40,56,.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 1rem 0;
+      box-shadow: 0 1px 0 rgba(228,209,175,.2);
+    }
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav__logo {
+      font-family: var(--font-h);
+      font-weight: 300;
+      font-size: 1.15rem;
+      letter-spacing: .06em;
+      color: var(--cream-0);
+    }
+    .nav__links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav__links a {
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--cream-0);
+      opacity: .8;
+      position: relative;
+      padding-bottom: 2px;
+      transition: opacity .2s;
+    }
+    .nav__links a:hover,
+    .nav__links a.active { opacity: 1; }
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s var(--ease);
+    }
+    .nav__links a:hover::after,
+    .nav__links a.active::after { transform: scaleX(1); }
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: .25rem;
+    }
+    .nav__hamburger span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--cream-0);
+      transition: transform .25s var(--ease), opacity .25s;
+    }
+    .nav__hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .nav__mobile {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: var(--navy);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .nav__mobile.open { display: flex; }
+    .nav__mobile a {
+      font-family: var(--font-h);
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: .04em;
+      color: var(--cream-0);
+    }
+
+    /* ─── PAGE HERO — text-based, navy ──────────────────────────── */
+    .page-hero {
+      background-image: url('./images/experiences.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: var(--navy);
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top right, rgba(18,40,56,.75) 0%, rgba(18,40,56,.45) 60%, rgba(18,40,56,.5) 100%);
+    }
+    .page-hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+      padding-block: clamp(8rem, 14vw, 12rem);
+    }
+    .page-hero__tag {
+      font-family: var(--font-b);
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .85;
+      margin-bottom: 1.5rem;
+    }
+    .page-hero__title {
+      font-family: var(--font-h);
+      font-weight: 300;
+      font-size: clamp(3rem, 6.5vw, 6rem);
+      line-height: 1.05;
+      letter-spacing: .02em;
+      color: var(--cream-0);
+      margin-bottom: 1.25rem;
+    }
+    .page-hero__subtitle {
+      font-family: var(--font-h);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      color: var(--gold);
+      opacity: .85;
+      margin-bottom: 2.5rem;
+      letter-spacing: .03em;
+      max-width: 560px;
+    }
+    .page-hero__body {
+      font-size: clamp(1rem, 1.5vw, 1.05rem);
+      line-height: 1.25;
+      color: rgba(233,220,207,.75);
+      max-width: 540px;
+    }
+    .page-hero__scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 3rem;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      opacity: .3;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    .page-hero__scroll span { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--cream-0); }
+    .page-hero__scroll svg { width: 16px; stroke: var(--cream-0); }
+    @keyframes scrollBounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(6px); }
+    }
+
+    /* ─── SECTION: RETREAT ───────────────────────────────────────── */
+    .section-retreat .divider { background: var(--teal); }
+    .section-retreat { background: var(--cream-1); }
+    .retreat__layout {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: start;
+    }
+    .retreat__heading {
+      font-family: var(--font-h);
+      font-weight: 300;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.15;
+      margin-top: .75rem;
+      margin-bottom: .5rem;
+    }
+    .retreat__subtitle {
+      font-family: var(--font-h);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: var(--teal);
+      opacity: .85;
+      margin-bottom: 2rem;
+    }
+    .retreat__body { font-size: 1.025rem; line-height: 1.25; opacity: .85; }
+    .retreat__body p + p { margin-top: 1.25rem; }
+    .retreat__note {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(23,58,82,.3);
+      font-size: .95rem;
+      line-height: 1.25;
+      opacity: .72;
+      font-style: italic;
+    }
+    .retreat__includes-title {
+      font-family: var(--font-b);
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      opacity: .5;
+      margin-bottom: 1.5rem;
+    }
+    .retreat__includes { display: flex; flex-direction: column; gap: 0; }
+    .retreat__include-item {
+      padding-block: 1.4rem;
+      border-top: 1px solid rgba(23,58,82,.3);
+      font-size: .975rem;
+      line-height: 1.25;
+      opacity: .82;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .retreat__include-item:last-child { border-bottom: 1px solid rgba(23,58,82,.3); }
+    .retreat__include-item::before {
+      content: '—';
+      color: var(--gold);
+      flex-shrink: 0;
+      opacity: .7;
+      margin-top: .05em;
+    }
+
+    /* ─── SECTION: RETURN FOR MEN ───────────────────────────────── */
+    .section-return-men { background: var(--navy); }
+    .return-men__layout {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: start;
+    }
+    .return-men__heading {
+      font-family: var(--font-h);
+      font-weight: 300;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.15;
+      margin-top: .75rem;
+      margin-bottom: .5rem;
+      color: var(--cream-0);
+    }
+    .return-men__subtitle {
+      font-family: var(--font-h);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: var(--gold);
+      opacity: .85;
+      margin-bottom: 2rem;
+    }
+    .return-men__body { font-size: 1.025rem; line-height: 1.25; color: rgba(233,220,207,.82); }
+    .return-men__body p + p { margin-top: 1.25rem; }
+    .section-return-men .eyebrow { color: var(--gold); opacity: .8; }
+    .section-return-men .divider { background: var(--gold); opacity: .4; }
+
+    /* ─── SECTION: EXECUTIVE EVENTS ─────────────────────────────── */
+    .section-executive { background: var(--teal); }
+    .executive__layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: start;
+    }
+    .executive__sticky { position: sticky; top: 8rem; }
+    .executive__heading {
+      font-family: var(--font-h);
+      font-weight: 300;
+      font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+      line-height: 1.2;
+      color: var(--cream-0);
+      margin-top: .75rem;
+      margin-bottom: .5rem;
+    }
+    .executive__subtitle {
+      font-family: var(--font-h);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      color: var(--gold);
+      opacity: .85;
+    }
+    .executive__eyebrow { color: var(--gold); opacity: .75; }
+    .executive__divider { background: var(--gold); opacity: .4; }
+    .executive__body { font-size: 1.025rem; line-height: 1.25; color: rgba(233,220,207,.82); }
+    .executive__body p + p { margin-top: 1.25rem; }
+    .executive__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      margin-top: 1.5rem;
+    }
+    .executive__tag {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .45rem 1rem;
+      border: 1px solid rgba(228,209,175,.35);
+      color: rgba(233,220,207,.75);
+    }
+    .executive__format {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(228,209,175,.2);
+      font-size: .95rem;
+      line-height: 1.25;
+      color: rgba(233,220,207,.65);
+      font-style: italic;
+    }
+
+    /* ─── SECTION: INQUIRY FORM ──────────────────────────────────── */
+    .section-inquiry { background: var(--navy); color: var(--cream-0); }
+    .inquiry__layout {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: start;
+    }
+    .inquiry__label {
+      font-family: var(--font-h);
+      font-weight: 300;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.25;
+      margin-top: .75rem;
+      color: var(--cream-0);
+    }
+    .section-inquiry .eyebrow { color: var(--gold); opacity: .8; }
+    .inquiry__body { font-size: 1rem; line-height: 1.25; color: rgba(233,220,207,.82); margin-top: 1.5rem; }
+    .inquiry__body p + p { margin-top: 1rem; }
+    .form__group { display: flex; flex-direction: column; gap: .4rem; }
+    .form__label { font-size: .72rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-0); opacity: .6; }
+    .form__input, .form__textarea, .form__select {
+      background: var(--cream-0);
+      border: 1px solid rgba(228,209,175,.5);
+      padding: .875rem 1rem;
+      font-family: var(--font-b);
+      font-size: .95rem;
+      color: var(--navy);
+      outline: none;
+      transition: border-color .2s, background .2s;
+      width: 100%;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+    .form__select { cursor: pointer; }
+    .form__input:focus, .form__textarea:focus, .form__select:focus { border-color: var(--gold); background: #f5ede2; }
+    .form__input:hover, .form__textarea:hover, .form__select:hover { background: #f0e5d8; }
+    .form__input::placeholder, .form__textarea::placeholder { opacity: .4; }
+    .form__textarea { resize: vertical; min-height: 140px; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    .footer {
+      background: var(--cream-0);
+      padding-block: clamp(4rem, 7vw, 6rem) clamp(2rem, 4vw, 3rem);
+      border-top: 1px solid rgba(228,209,175,.5);
+    }
+    .footer__top {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      padding-bottom: clamp(2.5rem, 5vw, 4rem);
+      border-bottom: 1px solid rgba(228,209,175,.5);
+      margin-bottom: 2.5rem;
+    }
+    .footer__brand-name { font-family: var(--font-h); font-weight: 300; font-size: 1.4rem; letter-spacing: .04em; margin-bottom: .75rem; }
+    .footer__tagline { font-size: .875rem; line-height: 1.25; opacity: .65; max-width: 260px; }
+    .footer__col-title { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; opacity: .5; margin-bottom: 1.25rem; }
+    .footer__links { list-style: none; display: flex; flex-direction: column; gap: .65rem; }
+    .footer__links a { font-size: .9rem; opacity: .7; transition: opacity .2s; }
+    .footer__links a:hover { opacity: 1; }
+    .footer__bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer__copy { font-size: .78rem; opacity: .45; }
+    .footer__legal { display: flex; gap: 1.5rem; }
+    .footer__legal a { font-size: .78rem; opacity: .45; transition: opacity .2s; }
+    .footer__legal a:hover { opacity: .75; }
+    .footer__social { display: flex; gap: 1.25rem; align-items: center; }
+    .footer__social a { opacity: .45; transition: opacity .2s; display: flex; color: var(--navy); }
+    .footer__social a:hover { opacity: .85; }
+    .footer__social svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .nav__links { display: none; }
+      .nav__hamburger { display: flex; }
+      .retreat__layout,
+      .return-men__layout,
+      .executive__layout,
+      .inquiry__layout { grid-template-columns: 1fr; }
+      .footer__top { grid-template-columns: 1fr 1fr; }
+      .executive__sticky { position: static; }
+      .page-hero__scroll { display: none; }
+    }
+    @media (max-width: 540px) {
+      .footer__top { grid-template-columns: 1fr; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ──────────────────────────────────────────── -->
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="/index.html" class="nav__logo" aria-label="MagdalenaGulda.com home">Magdalena Gulda</a>
+      <ul class="nav__links" role="list">
+        <li><a href="/for-women.html">For Women</a></li>
+        <li><a href="/for-men.html">For Men</a></li>
+        <li><a href="/method-about.html">Method &amp; About</a></li>
+        <li><a href="/experiences.html" class="active">Experiences</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <nav class="nav__mobile" id="mobileNav" aria-label="Mobile navigation">
+    <a href="/for-women.html">For Women</a>
+    <a href="/for-men.html">For Men</a>
+    <a href="/method-about.html">Method &amp; About</a>
+    <a href="/experiences.html">Experiences</a>
+  </nav>
+
+  <!-- ─── PAGE HERO ─────────────────────────────────────────────── -->
+  <section class="page-hero" aria-labelledby="page-hero-title">
+    <div class="container">
+      <div class="page-hero__content">
+        <p class="page-hero__tag fade-up">Beyond Private Mentorship</p>
+        <h1 class="page-hero__title fade-up delay-1" id="page-hero-title">Transformational<br/>Experiences</h1>
+        <p class="page-hero__subtitle fade-up delay-1">Immersive and organizational offerings designed to create profound shifts beyond private mentorship.</p>
+        <div class="page-hero__body fade-up delay-2">
+          <p>Two distinct containers exist within this work: one for individuals seeking a deeply immersive ceremonial and transformational experience, another for organizations ready to elevate leadership at a systemic level.</p>
+          <p>Each experience is curated with precision, discretion, and deep attention to the human nervous system, emotional resilience, energetic coherence, and sustainable high performance.</p>
+          <p>No fixed dates or pricing are listed here. Every collaboration begins with a private conversation to explore alignment, intentions, and the level of support required.</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-hero__scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <svg viewBox="0 0 18 18" fill="none" stroke-width="1.2"><path d="M9 3v12M3 10l6 6 6-6"/></svg>
+    </div>
+  </section>
+
+  <!-- ─── THE RETURN ─────────────────────────────────────── -->
+  <section class="section-retreat section-pad" id="retreat" aria-labelledby="retreat-heading">
+    <div class="container">
+      <div class="retreat__layout">
+
+        <!-- Left: heading + copy -->
+        <div>
+          <p class="eyebrow fade-up">Immersive Retreat for Women</p>
+          <div class="divider fade-up delay-1"></div>
+          <h2 class="retreat__heading fade-up delay-1" id="retreat-heading">The Remembrance</h2>
+          <p class="retreat__subtitle fade-up delay-1">A multi-day container for women ready to reclaim themselves beneath the pressure, performance, and constant demand to hold everything together.</p>
+
+          <div class="retreat__body fade-up delay-2">
+            <p>A ceremonial space created for high-performing women who are ready to return from chronic stress, overstimulation, emotional exhaustion, and continuous output into a deeper state of regulation, presence, softness, and feminine alignment.</p>
+            <p>Designed with elegance, depth, and premium care, this immersive experience invites the nervous system to finally exhale. Through carefully curated practices, sound, embodiment, restoration, reflection, and sacred space holding, participants are guided into profound recalibration — physically, emotionally, mentally, and energetically.</p>
+          </div>
+
+          <div style="margin-top:2.5rem;" class="fade-up delay-3">
+            <a href="#inquiry" class="btn-outline">Inquire About the Retreat</a>
+          </div>
+        </div>
+
+        <!-- Right: what's included -->
+        <div class="fade-up delay-2">
+          <p class="retreat__includes-title">What the Experience Includes</p>
+          <div class="retreat__includes">
+
+            <div class="retreat__include-item" style="display:block;">
+              <p style="margin-bottom:1.25rem;">A carefully curated immersive experience where nervous system regulation meets feminine embodiment, science meets ritual, and transformation happens through safety — not force.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:.65rem;margin-bottom:1.25rem;">
+                <span class="executive__tag" style="color:var(--navy);border-color:rgba(18,40,56,.3);">Ceremonial cacao</span>
+                <span class="executive__tag" style="color:var(--navy);border-color:rgba(18,40,56,.3);">Somatic practices</span>
+                <span class="executive__tag" style="color:var(--navy);border-color:rgba(18,40,56,.3);">Breathwork</span>
+                <span class="executive__tag" style="color:var(--navy);border-color:rgba(18,40,56,.3);">Sound healing</span>
+                <span class="executive__tag" style="color:var(--navy);border-color:rgba(18,40,56,.3);">Voice activation</span>
+                <span class="executive__tag" style="color:var(--navy);border-color:rgba(18,40,56,.3);">Deep restoration</span>
+              </div>
+              <p>Women are guided out of survival mode and back into connection with themselves, their bodies, intuition, and inner stability.</p>
+            </div>
+
+ 	        <div class="retreat__note fade-up delay-2">
+ 	           <p>Retreats are held seasonally in ceremonial locations in Mexico, the American Southwest, or other curated sites. Group size is intentionally limited.</p>
+	            <p style="margin-top:.75rem;">Many women do a retreat in combination with the private program — as an initiation before, or a capstone after. Both sequences work. The depth compounds.</p>
+	          </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── RETURN FOR MEN ──────────────────────────────────────── -->
+  <section class="section-return-men section-pad" id="return-men" aria-labelledby="return-men-heading">
+    <div class="container">
+      <div class="return-men__layout">
+
+        <div>
+          <p class="eyebrow fade-up">Immersive Retreat for Men</p>
+          <div class="divider fade-up delay-1"></div>
+          <h2 class="return-men__heading fade-up delay-1" id="return-men-heading">Return</h2>
+          <p class="return-men__subtitle fade-up delay-1">A private immersive retreat experience for high-performing men ready to recalibrate how they lead and perform.</p>
+          <div style="margin-top:2.5rem;" class="fade-up delay-3">
+            <a href="#inquiry" class="btn-outline-light">Inquire About the Retreat</a>
+          </div>
+        </div>
+
+        <div class="fade-up delay-2">
+          <div class="return-men__body">
+            <p>Created for founders, executives, entrepreneurs, investors, and men operating under constant responsibility, pressure, and decision-making, this experience offers a space beyond performance optimization alone.</p>
+            <p>A space to release accumulated stress and internal noise. To reconnect with purpose, presence, vitality, and grounded leadership.</p>
+            <p>Designed with discretion, precision, and premium care, the retreat integrates nervous system recalibration, strategic recovery, breathwork, somatic work, and high-level transformational guidance.</p>
+            <p>The experience supports men who appear highly functional on the outside, yet internally recognize the cost of prolonged intensity, overstimulation, and relentless output.</p>
+            <p>A return from survival mode into clear command.<br/>From pressure into precision.<br/>From exhaustion into sustainable power.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EXECUTIVE EVENTS ──────────────────────────────────────── -->
+  <section class="section-executive section-pad" id="executive" aria-labelledby="executive-heading">
+    <div class="container">
+      <div class="executive__layout">
+
+        <!-- Left: sticky heading -->
+        <div class="executive__sticky">
+          <p class="eyebrow executive__eyebrow fade-up">For Organizations</p>
+          <div class="divider executive__divider fade-up delay-1"></div>
+          <h2 class="executive__heading fade-up delay-1" id="executive-heading">
+            Executive Events<br/>&amp; Corporate<br/>Experiences
+          </h2>
+          <p class="executive__subtitle fade-up delay-1">For organizations ready to transform their leadership culture.</p>
+          <div style="margin-top:2.5rem;" class="fade-up delay-2">
+            <a href="#inquiry" class="btn-ghost-light">Inquire About Corporate Events</a>
+          </div>
+        </div>
+
+        <!-- Right: copy -->
+        <div>
+          <div class="executive__body fade-up delay-1">
+            <p>These aren't keynote talks or generic team-building exercises. They're precision experiences that leave measurable shifts in how a leadership team functions, communicates, and holds pressure.</p>
+            <p>I design custom experiences for leadership teams and organizations — one-day intensives, quarterly off-site retreats, and nervous system workshops built around your organization's specific situation and goals.</p>
+            <p>Format, duration, and focus are designed in consultation. What we build together is shaped by where your organization is and what the next level of leadership requires.</p>
+          </div>
+
+          <div class="executive__tags fade-up delay-2">
+            <span class="executive__tag">Executive Teams</span>
+            <span class="executive__tag">Leadership Off-Sites</span>
+            <span class="executive__tag">Nervous System Workshops</span>
+            <span class="executive__tag">Wellness-Integrated Orgs</span>
+            <span class="executive__tag">Corporate Retreats</span>
+          </div>
+
+          <p class="executive__format fade-up delay-3">
+            Format, duration, and focus are designed in consultation with your organization. Reach out with a brief description of your team and goals — we'll take it from there.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── INQUIRY FORM ──────────────────────────────────────────── -->
+  <section class="section-inquiry section-pad" id="inquiry" aria-labelledby="inquiry-heading">
+    <div class="container">
+      <div class="inquiry__layout">
+
+        <div>
+          <p class="eyebrow fade-up">Begin a Conversation</p>
+          <div class="divider fade-up delay-1"></div>
+          <h2 class="inquiry__label fade-up delay-1" id="inquiry-heading">
+            Inquire About<br/>an Experience
+          </h2>
+          <div class="inquiry__body fade-up delay-2">
+            <p>Tell me which experience you're interested in and a little about your situation. There's no pitch and no pressure — just an honest read on whether the timing and fit are right.</p>
+            <p>Response time: 24–48 hours.</p>
+          </div>
+        </div>
+
+        <form class="fade-up delay-1" name="inquiry-experiences" method="POST" novalidate
+          style="display:flex;flex-direction:column;gap:1.25rem;">
+          <div class="form__group">
+            <label class="form__label" for="inq-name">Name</label>
+            <input class="form__input" type="text" id="inq-name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="inq-email">Email</label>
+            <input class="form__input" type="email" id="inq-email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="inq-interest">I'm Inquiring About</label>
+            <select class="form__select" id="inq-interest" name="interest">
+              <option value="" disabled selected>Select an experience…</option>
+              <option value="retreat-women">The Remembrance — Women's Retreat</option>
+              <option value="retreat-men">Return for Men</option>
+              <option value="corporate">Executive Events</option>
+            </select>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="inq-message">Tell me about your situation</label>
+            <textarea class="form__textarea" id="inq-message" name="message" placeholder="A brief description of where you are, what you're looking for, and any relevant context…" required></textarea>
+          </div>
+          <button type="submit" class="btn-outline-light" style="align-self:flex-start;">Send Inquiry</button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────────── -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <p class="footer__brand-name">Magdalena Gulda</p>
+          <p class="footer__tagline">The Method — Structured nervous system recalibration for high-performing individuals.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Navigation</p>
+          <ul class="footer__links" role="list">
+            <li><a href="/for-women.html">For Women</a></li>
+            <li><a href="/for-men.html">For Men</a></li>
+            <li><a href="/method-about.html">Method &amp; About</a></li>
+            <li><a href="/experiences.html">Experiences</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Start Here</p>
+          <ul class="footer__links" role="list">
+            <li><a href="#meditation-download">Free Meditation</a></li>
+            <li><a href="#book-session">Book 1 on 1 Session</a></li>
+            <li><a href="https://thesoundhealinginstitute.com/" target="_blank" rel="noopener">Sound Healing Institute</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 Magdalena Gulda · The Method</p>
+        <div class="footer__social" aria-label="Social media">
+          <a href="https://wa.me/529841151423" target="_blank" rel="noopener" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+          <a href="https://www.instagram.com/magdalenaguldah" target="_blank" rel="noopener" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://www.linkedin.com/in/magdalena-gulda-48708610/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="https://www.youtube.com/@thesoundhealinginstitute4912" target="_blank" rel="noopener" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></a>
+          <a href="https://open.spotify.com/artist/7jXyIiWahFYkQ2rAhauAsF" target="_blank" rel="noopener" aria-label="Spotify"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────────── -->
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
