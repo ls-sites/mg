@@ -652,7 +652,22 @@
       .about__content { max-width: 70%; }
     }
     @media (max-width: 600px) {
-      .hero { background-position: 70% center; }
+      .hero {
+        background-position: 70% center;
+      }
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right,
+          rgba(233,220,207,.85) 0%,
+          rgba(233,220,207,.75) 55%,
+          rgba(233,220,207,.0) 100%);
+        z-index: 0;
+      }
+      .hero__inner {
+        max-width: 66%;
+      }
       .about__content { max-width: 100%; }
       .section-about::before { background: rgba(18,40,56,.88); }
     }
